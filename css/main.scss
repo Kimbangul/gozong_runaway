@@ -1,0 +1,439 @@
+@charset "utf-8";
+@import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
+@font-face {
+  font-family: 'MapoFlowerIsland';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff") format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$menu_width: 150px;
+$nav_height: 7vh;
+
+
+.jejumyeongjo {
+  font-family: 'Jeju Myeongjo', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+html{
+  width: 100vw;
+  height: 100vh;
+  font-size: 10px;
+}
+
+body {
+  user-select:none;
+  background-color: #000000;
+  font-family: 'MapoFlowerIsland', 'serif';
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  position: relative;
+  background-color: #000000;
+
+}
+
+a,
+img {
+  color: inherit;
+  display: block;
+
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+header {
+  height: $nav_height;
+  padding: 0 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  z-index: 99;
+
+  & > div.logo {
+    position: relative;
+    z-index: 100;
+    float: left;
+    width: 200px;
+    height: 100%;
+    text-align: center;
+    text-indent: -9999px;
+    font-size: 0;
+    transition: opacity 0.5s;
+    opacity: 1;
+
+    img {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      margin-top: -25px;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  & > nav {
+    height: 100%;
+    position: relative;
+    text-align: center;
+
+    & > .menu_btn{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 10px;
+      top: 50%;
+      margin-top: -17.5px;
+
+      z-index: 1000;
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 0.5s;
+      font-size: 3.5rem;
+      line-height: 35px;
+      cursor: pointer;
+
+      &:hover{
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      & > i:last-child{
+        display: none;
+
+        & > i:last-child.active{
+          display: block;
+
+          &+i:first-child{
+            display: none;
+          }
+        }
+      }
+    }
+
+
+
+    ul.menu {
+      position: absolute;
+      height: 100%;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      width: $menu_width*4;
+
+      & > li {
+        float: left;
+        width: $menu_width;
+        height: 100%;
+        padding: 0 10px;
+        position: relative;
+        text-align: center;
+
+        & a {
+          text-align: center;
+          display: block;
+          width: 100%;
+          height: 100%;
+          line-height: $nav_height;
+          vertical-align: middle;
+          color: rgba(255, 255, 255, 0.5);
+          transition: color 0.3s;
+          font-size: 1.6rem;
+
+          &:hover {
+            color: rgba(255, 255, 255, 1);
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+ul.submenu {
+  display: inline-block;
+  // opacity: 0;
+  // transition: opacity 0.5s;
+  & > li {
+    width: 100px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 10px 0 0;
+
+    & > a {
+      height: 35px !important;
+      line-height: 35px !important;
+    }
+  }
+}
+
+section#contents {
+  width: 100%;
+  height: 100%;
+  padding: 50px 0;
+  background-image: url("../img/main/slide/background_1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: background 1s;
+  position: relative;
+}
+
+div.contents_text {
+  text-shadow: 6px 6px 4px black;
+  position: absolute;
+  text-align: right;
+  bottom: 180px;
+  right: 3.125%;
+  z-index: 10;
+  display: inline-block;
+  text-overflow: ellipsis;
+  cursor: default;
+  white-space: nowrap;
+  color: white;
+  font-size: 1.6rem;
+
+  & > h1 {
+    font-size: 6rem;
+    letter-spacing: 1.6rem;
+    margin-top: 10px;
+  }
+}
+
+// imgslide
+
+div.imgslide {
+  margin: 0 auto;
+  width: 700px;
+  // transition: width 0.7s;
+  height: 700px;
+  overflow: hidden;
+  position: relative;
+  top: 50%;
+  margin-top: -400px;
+
+  & > .btn {
+    cursor: pointer;
+    position: absolute;
+    z-index: 3;
+    top: 43%;
+    left: -10px;
+    font-size: 5rem;
+    color: rgba(255, 255, 255, 0.3);
+    transition: color 0.3s;
+
+    &.right {
+      left: auto;
+      right: -10px;
+    }
+
+    &:hover {
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+
+  & > ul {
+    width: 3500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 0;
+    // 슬라이드 스크립트에서 위치 값을 가져올 수 있도록 작성해 줌.
+    // font-size: 0 을 작성해 주면 이미지 사이에 발생하는 작은 여백을 없앨 수 있음.
+    li {
+      width: 700px;
+      display: inline-block;
+
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+footer {
+  height: 150px;
+  position: fixed !important;
+  line-height: 130px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.3);
+  bottom: 0;
+  z-index: 90;
+  background-color: #000000;
+}
+
+footer > ul.social_menu {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  margin-left: -80px;
+
+  & li {
+    width: 40px;
+    float: left;
+    margin-right: 20px;
+
+    &:last-child{
+      margin-right: 0;
+    }
+
+    & img {
+      width: 100%;
+    }
+  }
+
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+@media screen and (min-width: 930px){
+  .menu_btn{
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 930px){
+  header > nav ul.menu{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+
+    &.active{
+      display: block;
+    }
+
+    & > li{
+      position: relative;
+      left: -20%;
+      top: 25%;
+      display: block;
+      float: none;
+      height: auto;
+      margin: 15px auto;
+      border-right: 1px solid rgba(255, 255, 255, 0.5);
+
+
+      &>a{
+        font-size: 2rem;
+        text-align: left;
+      }
+
+
+      ul.submenu{
+
+        position: absolute;
+        left: 120%;
+        bottom: 0;
+
+        & li{
+          width: 35vw;
+          height: 10vh;
+          a{
+            height: 100% !important;
+            line-height: 10vh !important;
+            font-size: 1.7rem;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px){
+html{
+  font-size: 8px;
+}
+
+
+  div.imgslide {
+
+    width: 80%;
+    height: auto;
+    padding-bottom: 80%;
+    top: 50%;
+    margin-top: -55%;
+
+    & > .btn {
+      // top: 0;
+      // bottom: 0;
+      margin: auto;
+
+      left: -15px;
+
+
+      &.right {
+        // left: auto;
+        right: -15px;
+      }
+    }
+
+    & > ul {
+      width: 500%;
+
+      li {
+        width: 20%;
+        display: inline-block;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  div.contents_text{
+    right: 3.12%;
+    font-size: 1.5rem;
+    h1{
+      font-size: 4.5rem;
+    }
+  }
+
+  header > div.logo {
+    width: 35%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  header > nav > .menu_btn{
+    margin-top: -14px;
+  }
+}

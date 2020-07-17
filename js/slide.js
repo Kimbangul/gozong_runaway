@@ -30,17 +30,23 @@ jQuery(document).ready(function(){
   img_count = imgs.children().length;
   img_width = imgs.find('img').width();
 
-  $( window ).resize(function() {
-    slide_position_fix();
-// 창 크기 변경 감지
 
-});
+
+  $( window ).resize($.debounce(300, function(){slide_position_fix();}));
+  // 창 크기 변경 감지
+
+  // resize(function() {
+  //   slide_position_fix();
+// });
+// 이전 코드
 
 function slide_position_fix(){
   img_width = imgs.find('img').width();
   imgs.css({
     left: img_width*(img_position-1)*(-1)
   });
+  // console.log('fixed');
+  // 작동 테스트용 코드
 }
 
 
@@ -61,7 +67,7 @@ function slide(){
   }
   else{
     delay();
-    console.log('hover');
+    // console.log('hover');
     return false;
   }
   delay();
@@ -69,13 +75,14 @@ function slide(){
 
 delay();
 
-$('.imgslide > .btn.left').click(function(){
+$('.imgslide > .btn.left').click($.debounce(200, function(){
   back();
-});
+}));
 
-$('.imgslide > .btn.right').click(function(){
+$('.imgslide > .btn.right').click($.debounce(200, function(){
   next();
-});
+}));
+
 
   function back(){
 
